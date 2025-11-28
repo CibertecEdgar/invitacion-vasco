@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,6 +25,17 @@
             padding: 0;
         }
 
+        /* Nuevo estilo para ocultar el reproductor de música de fondo */
+        .hidden-audio-player {
+            position: absolute;
+            width: 0;
+            height: 0;
+            pointer-events: none;
+            /* Asegura que no interfiera con clics */
+            opacity: 0;
+            /* Oculta completamente */
+        }
+
         /* Header con nubes animadas */
         .header {
             background: linear-gradient(180deg, #87CEEB 0%, #B0E0FF 100%);
@@ -42,7 +54,8 @@
             animation: float 20s infinite ease-in-out;
         }
 
-        .cloud:before, .cloud:after {
+        .cloud:before,
+        .cloud:after {
             content: '';
             position: absolute;
             background: white;
@@ -97,6 +110,7 @@
             0% {
                 transform: translateX(0);
             }
+
             100% {
                 transform: translateX(calc(100vw + 200px));
             }
@@ -113,8 +127,15 @@
         }
 
         @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
         }
 
         .header p {
@@ -123,7 +144,7 @@
             font-weight: bold;
             position: relative;
             z-index: 10;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .age-badge {
@@ -138,15 +159,22 @@
             line-height: 100px;
             margin: 20px auto;
             border: 5px solid white;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
             animation: spin 3s ease-in-out infinite;
             position: relative;
             z-index: 10;
         }
 
         @keyframes spin {
-            0%, 100% { transform: rotate(-5deg) scale(1); }
-            50% { transform: rotate(5deg) scale(1.1); }
+
+            0%,
+            100% {
+                transform: rotate(-5deg) scale(1);
+            }
+
+            50% {
+                transform: rotate(5deg) scale(1.1);
+            }
         }
 
         /* Sección de contador */
@@ -154,14 +182,14 @@
             background: white;
             padding: 40px 20px;
             text-align: center;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
 
         .countdown-section h2 {
             color: #FF6B9D;
             font-size: 2em;
             margin-bottom: 30px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .countdown {
@@ -176,14 +204,21 @@
             border-radius: 20px;
             padding: 20px;
             min-width: 70px;
-            box-shadow: 0 6px 15px rgba(255,105,180,0.3);
+            box-shadow: 0 6px 15px rgba(255, 105, 180, 0.3);
             border: 3px solid white;
             animation: pulse 2s infinite;
         }
 
         @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
         }
 
         .time-box .number {
@@ -191,7 +226,7 @@
             font-weight: bold;
             color: white;
             display: block;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
         }
 
         .time-box .label {
@@ -212,7 +247,7 @@
             color: #4A90E2;
             font-size: 2em;
             margin-bottom: 30px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .carousel-container {
@@ -221,7 +256,7 @@
             margin: 0 auto;
             overflow: hidden;
             border-radius: 20px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
         }
 
         .carousel-wrapper {
@@ -263,7 +298,7 @@
         }
 
         .carousel-btn {
-            background: rgba(255,182,193,0.9);
+            background: rgba(255, 182, 193, 0.9);
             border: none;
             color: white;
             font-size: 2em;
@@ -272,7 +307,7 @@
             border-radius: 50%;
             cursor: pointer;
             transition: all 0.3s;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
         .carousel-btn:hover {
@@ -314,7 +349,7 @@
             padding: 30px;
             margin: 20px auto;
             max-width: 500px;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
             border: 3px solid #FFB6C1;
         }
 
@@ -326,8 +361,15 @@
         }
 
         @keyframes wiggle {
-            0%, 100% { transform: rotate(-3deg); }
-            50% { transform: rotate(3deg); }
+
+            0%,
+            100% {
+                transform: rotate(-3deg);
+            }
+
+            50% {
+                transform: rotate(3deg);
+            }
         }
 
         .detail-card h3 {
@@ -353,7 +395,7 @@
             color: #FF6B9D;
             font-size: 2em;
             margin-bottom: 30px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .map-container {
@@ -361,7 +403,7 @@
             margin: 0 auto;
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
             border: 5px solid white;
         }
 
@@ -381,13 +423,13 @@
             border-radius: 50px;
             font-size: 1.2em;
             font-weight: bold;
-            box-shadow: 0 6px 20px rgba(255,20,147,0.3);
+            box-shadow: 0 6px 20px rgba(255, 20, 147, 0.3);
             transition: all 0.3s;
         }
 
         .map-button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(255,20,147,0.4);
+            box-shadow: 0 8px 25px rgba(255, 20, 147, 0.4);
         }
 
         /* Footer */
@@ -401,7 +443,7 @@
         .footer h2 {
             font-size: 2.5em;
             margin-bottom: 20px;
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.2);
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
         }
 
         .footer p {
@@ -470,6 +512,7 @@
                 transform: translateY(0) rotate(0deg);
                 opacity: 1;
             }
+
             100% {
                 transform: translateY(-120vh) rotate(360deg);
                 opacity: 0;
@@ -480,34 +523,111 @@
             .header h1 {
                 font-size: 2em;
             }
-            
+
             .header p {
                 font-size: 1.3em;
             }
-            
+
             .age-badge {
                 font-size: 3em;
                 width: 80px;
                 height: 80px;
                 line-height: 80px;
             }
-            
+
             .time-box {
                 min-width: 60px;
                 padding: 15px;
             }
-            
+
             .time-box .number {
                 font-size: 2em;
             }
-            
+
             .carousel-slide {
                 height: 300px;
             }
         }
+
+
+        /* Nuevos estilos para la Pantalla de Inicio y Botón */
+        #startScreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #FFE5EC 0%, #E8F5FF 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            /* Asegura que esté por encima de todo */
+            flex-direction: column;
+            transition: opacity 1s ease-out;
+        }
+
+        #startScreen.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        #startButton p {
+            color: #FF6B9D;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        #playMusicBtn {
+            background: linear-gradient(135deg, #FF6B9D 0%, #FF1493 100%);
+            color: white;
+            border: none;
+            padding: 20px 40px;
+            font-size: 1.5em;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(255, 20, 147, 0.5);
+            transition: all 0.3s;
+            font-family: inherit;
+            animation: pulseBtn 1.5s infinite;
+        }
+
+        #playMusicBtn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(255, 20, 147, 0.7);
+        }
+
+        @keyframes pulseBtn {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.02);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
     </style>
 </head>
+
 <body>
+    <iframe class="hidden-audio-player" id="musicPlayer"
+        src="https://cibertecedgar.github.io/img-archivo/audio.mp3"
+    frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+</iframe>
+
+    <div id="startScreen">
+        <div id="startButton">
+            <button id="playMusicBtn">
+                <i class="fas fa-play"></i> ¡ESTAS INVITADO (A)! <i class="fas fa-music"></i>
+            </button>
+        </div>
+    </div>
+
     <div class="balloons">
         <div class="balloon balloon1"></div>
         <div class="balloon balloon2"></div>
@@ -610,10 +730,10 @@
         <div class="map-section">
             <h2>📍 ¿Cómo llegar?</h2>
             <div class="map-container">
-                <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.0842838961445!2d-77.0481!3d-12.0964!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDA1JzQ3LjAiUyA3N8KwMDInNTMuMiJX!5e0!3m2!1ses!2spe!4v1234567890"
-                    allowfullscreen="" 
-                    loading="lazy">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d243.95586023078462!2d-77.0751952!3d-11.9541515!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105cf2a8bb886d3%3A0xb4b836102412a2de!2sBroasteria%20SOL!5e0!3m2!1ses!2spe!4v1764305289299!5m2!1ses!2spe"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
                 </iframe>
             </div>
             <div style="text-align: center;">
@@ -684,7 +804,7 @@
             currentSlide += direction;
             if (currentSlide < 0) currentSlide = totalSlides - 1;
             if (currentSlide >= totalSlides) currentSlide = 0;
-            
+
             const wrapper = document.getElementById('carouselWrapper');
             wrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
             updateDots();
@@ -712,15 +832,51 @@
             balloon.style.left = Math.random() * 100 + '%';
             balloon.style.background = colors[Math.floor(Math.random() * colors.length)];
             balloon.style.animationDuration = (6 + Math.random() * 4) + 's';
-            
+
             document.querySelector('.balloons').appendChild(balloon);
-            
+
             setTimeout(() => {
                 balloon.remove();
             }, 10000);
         }
 
         setInterval(createBalloon, 2000);
+
+
+        /* --- Nuevo Código para el Botón de Música --- */
+
+        // 1. Obtener elementos
+        const startScreen = document.getElementById('startScreen');
+        const playMusicBtn = document.getElementById('playMusicBtn');
+        const musicPlayer = document.getElementById('musicPlayer');
+
+        // 2. Función para iniciar la música y ocultar la pantalla de inicio
+        function startCelebration() {
+            // La forma más fiable de iniciar el audio/video incrustado después de un clic
+            // es recargar el src con 'autoplay=1' una vez que el usuario ha interactuado.
+
+            // Extraemos el src actual sin la bandera autoplay
+            const currentSrc = musicPlayer.src.split('?')[0];
+
+            // Construimos el nuevo src, asegurando que se reproduzca
+            const newSrc = currentSrc + '?autoplay=1&loop=1&playlist=bzQsxOTWFEc&start=33&controls=0&showinfo=0&rel=0&wmode=transparent';
+
+            musicPlayer.src = newSrc;
+
+            // Ocultar la pantalla de inicio con transición
+            startScreen.classList.add('hidden');
+
+            // Opcional: Eliminar la pantalla de inicio del DOM después de la transición
+            setTimeout(() => {
+                startScreen.style.display = 'none';
+            }, 1000); // 1000ms es la duración de la transición en CSS
+        }
+
+        // 3. Asignar el evento de clic al botón
+        playMusicBtn.addEventListener('click', startCelebration);
+
+
     </script>
 </body>
+
 </html>
