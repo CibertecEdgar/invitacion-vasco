@@ -1039,7 +1039,7 @@
                 <h2>✨ Confirma tu Asistencia ✨</h2>
                 <p>¡Nos encantaría contar contigo en la fiesta!</p>
             </div>
-            <form name="confirmacion-vasco" id="attendanceForm" method="POST" data-netlify="true" action="success-form">
+            <form name="confirmacion-vasco" id="attendanceForm" method="POST" data-netlify="true">
                 <div class="form-group">
                     <label for="guestName">👤 Nombre</label>
                     <input type="text" id="guestName" name="NombreInvitado" placeholder="Escribe tu nombre" required>
@@ -1211,40 +1211,7 @@
             }
         });
 
-        // Manejar el envío del formulario
-        attendanceForm.addEventListener('submit', async (event) => {
-            event.preventDefault(); // Mantenemos esto para evitar la recarga inicial
-
-            const formData = new FormData(attendanceForm); // Captura todos los campos
-
-            // 1. Validaciones (Puedes mantener tu código de validación aquí)
-            const guestName = document.getElementById('guestName').value;
-            if (guestName.trim() === '') {
-                alert('Por favor, escribe tu nombre');
-                return;
-            }
-
-            // 2. Envío a Netlify usando Fetch API
-            try {
-                const response = await fetch(attendanceForm.getAttribute('action'), {
-                    method: 'POST',
-                    body: formData,
-                });
-
-                if (response.ok) {
-                    // ÉXITO: Los datos fueron aceptados por Netlify
-                    alert(`¡Gracias ${guestName}! Tu asistencia ha sido confirmada. ¡Te esperamos! 🎉`);
-                    attendanceForm.reset();
-                    modal.style.display = 'none';
-                } else {
-                    alert('Hubo un error al confirmar la asistencia. Intenta de nuevo.');
-                }
-
-            } catch (error) {
-                console.error('Error de red:', error);
-                alert('Hubo un error de conexión. Por favor, revisa tu internet.');
-            }
-        });
+        
 
 
     </script>
