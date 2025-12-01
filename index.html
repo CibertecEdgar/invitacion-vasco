@@ -964,13 +964,13 @@
                         <div class="carousel-slide-content">
                             <img src="https://cibertecedgar.github.io/img-archivo/img%20(7).jpeg" alt="" style="
                                 width: 322px;
-                                height: 400px;"> 
+                                height: 400px;">
                         </div>
                     </div>
                     <div class="carousel-slide">
                         <div class="carousel-slide-content">
                             <img src="https://cibertecedgar.github.io/img-archivo/img%20(9).jpeg" alt="" style="
-                                width: 325px;"> 
+                                width: 325px;">
                         </div>
                     </div>
                 </div>
@@ -1039,13 +1039,13 @@
                 <h2>✨ Confirma tu Asistencia ✨</h2>
                 <p>¡Nos encantaría contar contigo en la fiesta!</p>
             </div>
-            <form id="attendanceForm">
+            <form name="confirmacion-vasco" id="attendanceForm" method="POST" data-netlify="true" action="/">
                 <div class="form-group">
                     <label for="guestName">👤 Nombre</label>
-                    <input type="text" id="guestName" name="guestName" placeholder="Escribe tu nombre" required>
+                    <input type="text" id="guestName" name="NombreInvitado" placeholder="Escribe tu nombre" required>
                 </div>
                 <div class="checkbox-group">
-                    <input type="checkbox" id="confirmCheckbox" name="confirmCheckbox" required>
+                    <input type="checkbox" id="confirmCheckbox" name="Confirmacion" required>
                     <label for="confirmCheckbox">Confirmo mi asistencia a la fiesta de Vasco</label>
                 </div>
                 <div class="form-buttons">
@@ -1212,31 +1212,38 @@
         });
 
         // Manejar el envío del formulario
-        attendanceForm.addEventListener('submit', (event) => {
-            event.preventDefault();
+        attendanceForm.addEventListener('submit', async (event) => {
+            event.preventDefault(); // Mantenemos esto para evitar la recarga inicial
 
+            const formData = new FormData(attendanceForm); // Captura todos los campos
+
+            // 1. Validaciones (Puedes mantener tu código de validación aquí)
             const guestName = document.getElementById('guestName').value;
-            const confirmCheckbox = document.getElementById('confirmCheckbox').checked;
-
             if (guestName.trim() === '') {
                 alert('Por favor, escribe tu nombre');
                 return;
             }
 
-            if (!confirmCheckbox) {
-                alert('Por favor, confirma tu asistencia');
-                return;
+            // 2. Envío a Netlify usando Fetch API
+            try {
+                const response = await fetch(attendanceForm.getAttribute('action'), {
+                    method: 'POST',
+                    body: formData,
+                });
+
+                if (response.ok) {
+                    // ÉXITO: Los datos fueron aceptados por Netlify
+                    alert(`¡Gracias ${guestName}! Tu asistencia ha sido confirmada. ¡Te esperamos! 🎉`);
+                    attendanceForm.reset();
+                    modal.style.display = 'none';
+                } else {
+                    alert('Hubo un error al confirmar la asistencia. Intenta de nuevo.');
+                }
+
+            } catch (error) {
+                console.error('Error de red:', error);
+                alert('Hubo un error de conexión. Por favor, revisa tu internet.');
             }
-
-            // Aquí puedes enviar los datos a un servidor
-            // Por ahora, mostraremos un mensaje de éxito
-            alert(`¡Gracias ${guestName}! Tu asistencia ha sido confirmada. ¡Te esperamos en la fiesta de Vasco! 🎉`);
-
-            // Limpiar el formulario
-            attendanceForm.reset();
-
-            // Cerrar el modal
-            modal.style.display = 'none';
         });
 
 
