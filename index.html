@@ -269,9 +269,7 @@
             height: 400px;
             display: flex;
             align-items: center;
-            justify-content: center;
             background: #f0f0f0;
-            border: 5px dashed #FFB6C1;
         }
 
         .carousel-slide-content {
@@ -611,18 +609,292 @@
                 transform: scale(1);
             }
         }
+
+        /* Estilos para el botón de confirmar asistencia */
+        .confirm-attendance-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #4A90E2 0%, #357ABD 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2em;
+            font-weight: bold;
+            box-shadow: 0 6px 20px rgba(74, 144, 226, 0.3);
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .confirm-attendance-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(74, 144, 226, 0.4);
+        }
+
+        /* Estilos para el Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #FFE5EC 0%, #E8F5FF 100%);
+            margin: auto;
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            max-width: 500px;
+            width: 90%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 3px solid white;
+            animation: slideIn 0.4s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translate(-50%, -60%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translate(-50%, -50%);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .modal-header h2 {
+            color: #FF6B9D;
+            font-size: 2em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            margin: 0 0 10px 0;
+        }
+
+        .modal-header p {
+            color: #4A90E2;
+            font-size: 1.1em;
+            margin: 0;
+        }
+
+        .close-btn {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            font-size: 2em;
+            font-weight: bold;
+            color: #FF6B9D;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .close-btn:hover {
+            transform: scale(1.2);
+            color: #FF1493;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            color: #4A90E2;
+            font-weight: bold;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+
+        .form-group input[type="text"] {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #FFB6C1;
+            border-radius: 10px;
+            font-size: 1em;
+            font-family: inherit;
+            transition: all 0.3s;
+            box-sizing: border-box;
+        }
+
+        .form-group input[type="text"]:focus {
+            outline: none;
+            border-color: #FF6B9D;
+            box-shadow: 0 0 10px rgba(255, 107, 157, 0.3);
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            accent-color: #FF6B9D;
+        }
+
+        .checkbox-group label {
+            margin: 0;
+            cursor: pointer;
+            color: #4A90E2;
+            font-weight: bold;
+            font-size: 1.05em;
+        }
+
+        .form-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .form-btn {
+            padding: 15px 30px;
+            font-size: 1.1em;
+            font-weight: bold;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: inherit;
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, #FF6B9D 0%, #FF1493 100%);
+            color: white;
+            box-shadow: 0 6px 20px rgba(255, 20, 147, 0.3);
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 20, 147, 0.4);
+        }
+
+        .btn-cancel {
+            background: #E0E0E0;
+            color: #666;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .btn-cancel:hover {
+            background: #D0D0D0;
+            transform: translateY(-2px);
+        }
+
+        /* Responsive del Modal */
+        @media (max-width: 768px) {
+            .modal-content {
+                width: 90%;
+                padding: 30px 20px;
+            }
+
+            .modal-header h2 {
+                font-size: 1.6em;
+            }
+
+            .modal-header p {
+                font-size: 0.95em;
+            }
+
+            .form-group label {
+                font-size: 1em;
+            }
+
+            .form-group input[type="text"] {
+                font-size: 16px;
+                padding: 12px 12px;
+            }
+
+            .checkbox-group {
+                flex-direction: unset;
+                align-items: flex-start;
+            }
+
+            .form-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .form-btn {
+                width: 100%;
+                min-width: unset;
+                padding: 14px 20px;
+                font-size: 1em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .modal-content {
+                padding: 25px 15px;
+            }
+
+            .modal-header h2 {
+                font-size: 1.4em;
+            }
+
+            .form-group {
+                margin-bottom: 20px;
+            }
+
+            .close-btn {
+                width: 35px;
+                height: 35px;
+                font-size: 1.5em;
+                right: 15px;
+                top: 15px;
+            }
+        }
     </style>
 </head>
 
 <body>
-    <iframe class="hidden-audio-player" id="musicPlayer"
-        src="https://cibertecedgar.github.io/img-archivo/audio.mp3"
-    frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
-</iframe>
+    <iframe class="hidden-audio-player" id="musicPlayer" src="https://cibertecedgar.github.io/img-archivo/audio.mp3"
+        frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+    </iframe>
 
     <div id="startScreen">
         <div id="startButton">
-            <button id="playMusicBtn">
+            <button id="playMusicBtn" style="width: 320px;">
                 <i class="fas fa-play"></i> ¡ESTAS INVITADO (A)! <i class="fas fa-music"></i>
             </button>
         </div>
@@ -676,26 +948,29 @@
                 <div class="carousel-wrapper" id="carouselWrapper">
                     <div class="carousel-slide">
                         <div class="carousel-slide-content">
-                            <i class="fas fa-camera"></i>
-                            <p>Espacio para foto 1<br>Agrega tus imágenes aquí</p>
+                            <img src="https://cibertecedgar.github.io/img-archivo/img%20(21).jpeg" alt="" style="
+                                width: 322px;
+                                height: 323px;">
                         </div>
                     </div>
                     <div class="carousel-slide">
                         <div class="carousel-slide-content">
-                            <i class="fas fa-camera"></i>
-                            <p>Espacio para foto 2<br>Agrega tus imágenes aquí</p>
+                            <img src="	https://cibertecedgar.github.io/img-archivo/img%20(1).jpeg" alt="" style="
+                                width: 324px;
+                                height: 311px;">
                         </div>
                     </div>
                     <div class="carousel-slide">
                         <div class="carousel-slide-content">
-                            <i class="fas fa-camera"></i>
-                            <p>Espacio para foto 3<br>Agrega tus imágenes aquí</p>
+                            <img src="https://cibertecedgar.github.io/img-archivo/img%20(7).jpeg" alt="" style="
+                                width: 322px;
+                                height: 400px;"> 
                         </div>
                     </div>
                     <div class="carousel-slide">
                         <div class="carousel-slide-content">
-                            <i class="fas fa-camera"></i>
-                            <p>Espacio para foto 4<br>Agrega tus imágenes aquí</p>
+                            <img src="https://cibertecedgar.github.io/img-archivo/img%20(9).jpeg" alt="" style="
+                                width: 325px;"> 
                         </div>
                     </div>
                 </div>
@@ -740,6 +1015,10 @@
                 <a href="https://maps.app.goo.gl/U6vSBXLQjBKPsVVe6" target="_blank" class="map-button">
                     🗺️ Ver en Google Maps
                 </a>
+                <br>
+                <button class="confirm-attendance-btn" id="confirmAttendanceBtn">
+                    ✓ Confirmar Asistencia
+                </button>
             </div>
         </div>
 
@@ -749,6 +1028,31 @@
             <p>Será un día lleno de diversión</p>
             <p>¡Te esperamos para celebrar juntos!</p>
             <p style="margin-top: 20px; font-size: 1.5em;">💙 Con cariño, la familia de Vasco 💙</p>
+        </div>
+    </div>
+
+    <!-- Modal para confirmar asistencia -->
+    <div id="attendanceModal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" id="closeModalBtn">&times;</button>
+            <div class="modal-header">
+                <h2>✨ Confirma tu Asistencia ✨</h2>
+                <p>¡Nos encantaría contar contigo en la fiesta!</p>
+            </div>
+            <form id="attendanceForm">
+                <div class="form-group">
+                    <label for="guestName">👤 Nombre</label>
+                    <input type="text" id="guestName" name="guestName" placeholder="Escribe tu nombre" required>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="confirmCheckbox" name="confirmCheckbox" required>
+                    <label for="confirmCheckbox">Confirmo mi asistencia a la fiesta de Vasco</label>
+                </div>
+                <div class="form-buttons">
+                    <button type="submit" class="form-btn btn-submit">✓ Enviar</button>
+                    <button type="button" class="form-btn btn-cancel" id="cancelBtn">✕ Cancelar</button>
+                </div>
+            </form>
         </div>
     </div>
 
@@ -820,7 +1124,7 @@
         // Auto-advance carousel
         setInterval(() => {
             moveCarousel(1);
-        }, 5000);
+        }, 3000);
 
         initCarousel();
 
@@ -842,8 +1146,7 @@
 
         setInterval(createBalloon, 2000);
 
-
-        /* --- Nuevo Código para el Botón de Música --- */
+        /* --- Botón de Música --- */
 
         // 1. Obtener elementos
         const startScreen = document.getElementById('startScreen');
@@ -874,6 +1177,67 @@
 
         // 3. Asignar el evento de clic al botón
         playMusicBtn.addEventListener('click', startCelebration);
+
+
+        // --- Funcionalidad del Modal de Confirmación de Asistencia ---
+
+        // Obtener elementos del modal
+        const modal = document.getElementById('attendanceModal');
+        const confirmAttendanceBtn = document.getElementById('confirmAttendanceBtn');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        const cancelBtn = document.getElementById('cancelBtn');
+        const attendanceForm = document.getElementById('attendanceForm');
+
+        // Abrir modal
+        confirmAttendanceBtn.addEventListener('click', () => {
+            modal.style.display = 'block';
+        });
+
+        // Cerrar modal al presionar el botón X
+        closeModalBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        // Cerrar modal al presionar el botón Cancelar
+        cancelBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+            attendanceForm.reset();
+        });
+
+        // Cerrar modal al hacer clic fuera del contenido
+        window.addEventListener('click', (event) => {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        // Manejar el envío del formulario
+        attendanceForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            const guestName = document.getElementById('guestName').value;
+            const confirmCheckbox = document.getElementById('confirmCheckbox').checked;
+
+            if (guestName.trim() === '') {
+                alert('Por favor, escribe tu nombre');
+                return;
+            }
+
+            if (!confirmCheckbox) {
+                alert('Por favor, confirma tu asistencia');
+                return;
+            }
+
+            // Aquí puedes enviar los datos a un servidor
+            // Por ahora, mostraremos un mensaje de éxito
+            alert(`¡Gracias ${guestName}! Tu asistencia ha sido confirmada. ¡Te esperamos en la fiesta de Vasco! 🎉`);
+
+            // Limpiar el formulario
+            attendanceForm.reset();
+
+            // Cerrar el modal
+            modal.style.display = 'none';
+        });
 
 
     </script>
