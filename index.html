@@ -1213,31 +1213,47 @@
 
         // Manejar el envío del formulario
         attendanceForm.addEventListener('submit', async (event) => {
-            event.preventDefault(); // Mantenemos esto para evitar la recarga inicial
+            event.preventDefault();
 
-            const formData = new FormData(attendanceForm); // Captura todos los campos
-
-            // 1. Validaciones (Puedes mantener tu código de validación aquí)
+            // 1. Validaciones
             const guestName = document.getElementById('guestName').value;
+            const confirmCheckbox = document.getElementById('confirmCheckbox').checked;
+
             if (guestName.trim() === '') {
                 alert('Por favor, escribe tu nombre');
                 return;
             }
 
-            // 2. Envío a Netlify usando Fetch API
+            if (!confirmCheckbox) {
+                alert('Por favor, confirma tu asistencia marcando el checkbox');
+                return;
+            }
+
+            // 2. Preparar datos en el formato que espera el backend
+            const requestData = {
+                invitado: guestName,
+                aceptacion: confirmCheckbox // true porque el checkbox está marcado
+            };
+
+            // 3. Envío al endpoint
             try {
-                const response = await fetch(attendanceForm.getAttribute('action'), {
+                const response = await fetch('https://descuentoventasstockcajas-2946605267.us-central1.run.app/invitaciones', {
                     method: 'POST',
-                    body: formData,
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(requestData),
                 });
 
+                const responseData = await response.json();
+
                 if (response.ok) {
-                    // ÉXITO: Los datos fueron aceptados por Netlify
+                    // ÉXITO: Los datos fueron registrados
                     alert(`¡Gracias ${guestName}! Tu asistencia ha sido confirmada. ¡Te esperamos! 🎉`);
                     attendanceForm.reset();
                     modal.style.display = 'none';
                 } else {
-                    alert('Hubo un error al confirmar la asistencia. Intenta de nuevo.');
+                    alert(`Error: ${responseData.error || 'No se pudo confirmar la asistencia. Intenta de nuevo.'}`);
                 }
 
             } catch (error) {
